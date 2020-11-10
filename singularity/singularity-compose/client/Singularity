@@ -1,0 +1,12 @@
+Bootstrap: docker
+From: mpape234/julea:1.0
+
+%setup
+    mkdir -p ${SINGULARITY_ROOTFS}/code
+
+%files
+        singularity-entrypoint.sh /code/singularity-entrypoint.sh
+
+%startscript
+        /bin/bash /code/singularity-entrypoint.sh &&
+	echo "Started JULEA client"

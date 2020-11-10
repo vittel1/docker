@@ -1,0 +1,14 @@
+version: "1.0"
+instances:
+        julea-server:
+                build: 
+                       context: ./server
+                ports:
+                 - 9876:9876
+                options:
+                 - fakeroot
+        julea-client:
+                build:
+                       context: ./client
+                options:
+                 - fakeroot
