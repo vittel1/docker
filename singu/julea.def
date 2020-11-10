@@ -1,8 +1,0 @@
-Bootstrap: docker
-From: mpape234/julea:1.0
-
-%files
-	singularity-entrypoint.sh /entrypoint.sh
-
-%runscript
-	/entrypoint.sh

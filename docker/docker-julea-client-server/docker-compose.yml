@@ -1,0 +1,15 @@
+services:
+        julea-server:
+                build:
+                        context: ./server
+                image: julea-server-image
+                ports: 
+                 - "9876:9876"
+                hostname: julea-server
+                container_name: julea-server
+        julea-client:
+                build:
+                        context: ./client
+                image: julea-client-image
+                hostname: julea-client-1
+                container_name: julea-client-1
