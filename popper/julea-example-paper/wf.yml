@@ -1,0 +1,9 @@
+steps:
+
+- id: "make"
+  uses: "./containers/"
+  runs: ["sh", "-c", "./containers/docker-entrypoint.sh && ./src/julea/execute.sh"]
+
+- id: "get spack deps"
+  uses: "./containers/"
+  runs: ["sh", "-c", "./src/config/spack-config.sh"]
