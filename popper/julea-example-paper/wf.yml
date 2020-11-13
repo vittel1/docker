@@ -1,9 +1,14 @@
 steps:
 
 - id: "make"
-  uses: "./containers/"
-  runs: ["sh", "-c", "./containers/docker-entrypoint.sh && ./src/julea/execute.sh"]
+  uses: "./containers/julea/"
+  runs: ["sh", "-c", "./containers/julea/docker-entrypoint.sh && ./src/julea/execute.sh"]
 
-- id: "get spack deps"
-  uses: "./containers/"
-  runs: ["sh", "-c", "./src/config/spack-config.sh"]
+- id: "get container config"
+  uses: "./containers/julea/"
+  runs: ["sh", "-c", "./containers/julea/docker-entrypoint.sh && ./src/config/extract-config.sh"]
+
+- id: "generate plot"
+  uses: "./containers/plot/"
+  runs: ["sh", "-c", "gnuplot -e \"set terminal png size 400,300; set output '/workspace/results/example.png'; plot [-4:4] exp(-x**2 / 2)\""]
+
